@@ -20,7 +20,12 @@ class WeatherWorker: WeatherWorkerDelegate {
     
     func getWeather(success: @escaping (Weather) -> (), fail:@escaping (String) -> ()) {
         service.getWeather { (weather) in
-            success(weather)
+            
+            if weather.title.isEmpty || weather.consolidated_weather.isEmpty || weather.consolidated_weather.count < 4 {
+                fail("Weather information was not fetched or should have at least four consolidated weather information.")
+            } else {
+                success(weather)
+            }
             
         } fail: { (message) in
             fail(message)

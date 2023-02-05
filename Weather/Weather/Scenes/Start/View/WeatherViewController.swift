@@ -40,7 +40,6 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: WeatherViewControllerDelegate {
     func presenter(didSuccessShowWeather presenterToView: WeatherModel.ViewModel) {
         contentView?.cityTitleLabel.text = presenterToView.weather.title
-        contentView?.someImageView.image = presenterToView.icon
         contentView?.postTitleContentLabel.text = "\(Int(presenterToView.weather.consolidated_weather[3].the_temp))°"
         contentView?.descriptionLabel.text = presenterToView.weather.consolidated_weather[3].weather_state_name
         contentView?.valueLowTemperatureLabel.text = "\(Int(presenterToView.weather.consolidated_weather[3].min_temp))°"
@@ -51,7 +50,20 @@ extension WeatherViewController: WeatherViewControllerDelegate {
     
     func presenter(didFailShowWeather message: String) {
         errorMessage = message
+        contentView?.errorLabel.text = message
+        contentView?.lowTemperatureLabel.isHidden = true
+        contentView?.highTemperatureLabel.isHidden = true
         self.removeSpinner()
-        print("didFailShowWeather")
+    }
+    
+    func presenter(didSuccessShowIcon presenterToView: IconModel.ViewModel) {
+        contentView?.someImageView.image = presenterToView.icon
+        self.removeSpinner()
+    }
+    
+    func presenter(didFailShowIcon message: String) {
+        errorMessage = message
+        contentView?.errorLabel.text = message
+        self.removeSpinner()
     }
 }

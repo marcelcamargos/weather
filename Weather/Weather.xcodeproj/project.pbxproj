@@ -42,6 +42,7 @@
 		101CE44A298FE10800B7A9FC /* WeatherViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101CE449298FE10800B7A9FC /* WeatherViewControllerTests.swift */; };
 		101CE452298FE95B00B7A9FC /* Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101CE451298FE95B00B7A9FC /* Seeds.swift */; };
 		101CE45429904C2D00B7A9FC /* IconWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101CE45329904C2D00B7A9FC /* IconWorkerTests.swift */; };
+		101CE456299073B200B7A9FC /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101CE455299073B200B7A9FC /* IconModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		101CE449298FE10800B7A9FC /* WeatherViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewControllerTests.swift; sourceTree = "<group>"; };
 		101CE451298FE95B00B7A9FC /* Seeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeds.swift; sourceTree = "<group>"; };
 		101CE45329904C2D00B7A9FC /* IconWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWorkerTests.swift; sourceTree = "<group>"; };
+		101CE455299073B200B7A9FC /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				101CE41B298F346E00B7A9FC /* WeatherModel.swift */,
+				101CE455299073B200B7A9FC /* IconModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				101CE426298F369100B7A9FC /* WeatherPresenterDelegate.swift in Sources */,
 				101CE3FE298F32B900B7A9FC /* ViewCodable.swift in Sources */,
 				101CE424298F34D600B7A9FC /* WeatherView.swift in Sources */,
+				101CE456299073B200B7A9FC /* IconModel.swift in Sources */,
 				101CE42E298F39B700B7A9FC /* ConsolidatedWeather.swift in Sources */,
 				101CE430298F3AD300B7A9FC /* Source.swift in Sources */,
 				101CE41C298F346E00B7A9FC /* WeatherModel.swift in Sources */,

@@ -10,4 +10,6 @@ import Foundation
 protocol WeatherPresenterDelegate: AnyObject {
     func interactor(didSuccessShowWeather response: WeatherModel.Response)
     func interactor(didFailShowWeather error: String)
+    func interactor(didSuccessShowIcon response: IconModel.Response)
+    func interactor(didFailShowIcon error: String)
 }

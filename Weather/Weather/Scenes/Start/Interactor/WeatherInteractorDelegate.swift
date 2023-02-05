@@ -9,4 +9,5 @@ import UIKit
 
 protocol WeatherInteractorDelegate: AnyObject {
     func fetchWeather()
+    func fetchIcon(weatherStateAbbr: String)
 }

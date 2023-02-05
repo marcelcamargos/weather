@@ -10,4 +10,6 @@ import Foundation
 protocol WeatherViewControllerDelegate: AnyObject {
     func presenter(didSuccessShowWeather presenterToView: WeatherModel.ViewModel)
     func presenter(didFailShowWeather message: String)
+    func presenter(didSuccessShowIcon presenterToView: IconModel.ViewModel)
+    func presenter(didFailShowIcon message: String)
 }

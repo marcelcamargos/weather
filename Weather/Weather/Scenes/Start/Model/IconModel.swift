@@ -1,14 +1,14 @@
 //
-//  WeatherModel.swift
+//  IconModel.swift
 //  Weather
 //
-//  Created by Marcel Camargos on 04/02/23.
+//  Created by Marcel Camargos on 05/02/23.
 //
 
 import Foundation
 import UIKit
 
-enum WeatherModel {
+enum IconModel {
 
     //MARK: Request
     ///view -> interactor
@@ -21,13 +21,13 @@ enum WeatherModel {
     ///interactor -> presenter
 
     struct Response {
-        let weather: Weather
+        let icon: UIImage
     }
 
     //MARK: ViewModel
     ///presenter -> view
 
     struct ViewModel {
-        let weather: Weather
+        let icon: UIImage
     }
 }

@@ -14,7 +14,6 @@ class WeatherView: UIView {
         uiLabel.textColor = .black
         uiLabel.textAlignment = .left
         uiLabel.font = UIFont.boldSystemFont(ofSize: 32)
-        uiLabel.text = "Toronto"
         return uiLabel
     }()
     
@@ -33,7 +32,6 @@ class WeatherView: UIView {
         uiLabel.textAlignment = .center
         uiLabel.font = uiLabel.font.withSize(48)
         uiLabel.numberOfLines = 0
-        uiLabel.text = "16"
         return uiLabel
     }()
     
@@ -51,7 +49,6 @@ class WeatherView: UIView {
         uiLabel.textColor = .black
         uiLabel.textAlignment = .center
         uiLabel.font = UIFont.systemFont(ofSize: 16)
-        uiLabel.text = "Description"
         return uiLabel
     }()
     
@@ -71,7 +68,6 @@ class WeatherView: UIView {
         uiLabel.textColor = .black
         uiLabel.textAlignment = .right
         uiLabel.font = UIFont.systemFont(ofSize: 32)
-        uiLabel.text = "11"
         return uiLabel
     }()
     
@@ -97,7 +93,6 @@ class WeatherView: UIView {
         uiLabel.translatesAutoresizingMaskIntoConstraints = false
         uiLabel.textColor = .black
         uiLabel.font = UIFont.systemFont(ofSize: 32)
-        uiLabel.text = "17"
         return uiLabel
     }()
     
@@ -124,6 +119,26 @@ class WeatherView: UIView {
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+    
+    public lazy var errorLabel: UILabel = {
+        let uiLabel = UILabel()
+        uiLabel.translatesAutoresizingMaskIntoConstraints = false
+        uiLabel.textColor = .black
+        uiLabel.textAlignment = .center
+        uiLabel.font = UIFont.systemFont(ofSize: 16)
+        uiLabel.numberOfLines = 0
+        return uiLabel
+    }()
+    
+    public lazy var iconErrorLabel: UILabel = {
+        let uiLabel = UILabel()
+        uiLabel.translatesAutoresizingMaskIntoConstraints = false
+        uiLabel.textColor = .black
+        uiLabel.textAlignment = .center
+        uiLabel.font = UIFont.systemFont(ofSize: 16)
+        uiLabel.numberOfLines = 0
+        return uiLabel
     }()
     
     init() {
@@ -156,6 +171,9 @@ extension WeatherView: ViewCodable {
         horizontalStackView.addArrangedSubview(hightStackView)
         
         addSubview(horizontalStackView)
+        
+        addSubview(errorLabel)
+        addSubview(iconErrorLabel)
     }
     
     func setupConstraints() {
@@ -171,5 +189,15 @@ extension WeatherView: ViewCodable {
         
         horizontalStackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4).isActive = true
         horizontalStackView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        
+        errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
+        errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        
+        iconErrorLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        iconErrorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        iconErrorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        iconErrorLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
 }
