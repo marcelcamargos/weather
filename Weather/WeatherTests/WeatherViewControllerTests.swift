@@ -42,11 +42,16 @@ final class WeatherViewControllerTests: XCTestCase {
         // MARK: Method call expectations
         
         var getWeatherCalled = false
+        var getIconCalled = false
         
         // MARK: Spied methods
         
         func fetchWeather() {
             getWeatherCalled = true
+        }
+        
+        func fetchIcon(weatherStateAbbr: String) {
+            getIconCalled = true
         }
     }
     
@@ -71,7 +76,7 @@ final class WeatherViewControllerTests: XCTestCase {
         
         // When
         let weather = Seeds.Weat.weather
-        let viewModel = WeatherModel.ViewModel(weather: weather, icon: UIImage())
+        let viewModel = WeatherModel.ViewModel(weather: weather)
         
         sut?.presenter(didSuccessShowWeather: viewModel)
         

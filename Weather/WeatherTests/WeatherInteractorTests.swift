@@ -35,22 +35,36 @@ final class WeatherInteractorTests: XCTestCase {
         // MARK: Method call expectations
         
         var presentWeatherCalled = false
+        var presentIconCalled = false
         
         // MARK: Argument expectations
 
-        var responseTest: WeatherModel.Response?
-        var errorMessageTest: String?
+        var responseWeatherTest: WeatherModel.Response?
+        var responseIconTest: IconModel.Response?
+        
+        var errorWeatherMessageTest: String?
+        var errorIconMessageTest: String?
         
         // MARK: WeatherPresenterDelegate
         
         func interactor(didSuccessShowWeather response: WeatherModel.Response) {
             presentWeatherCalled = true
-            responseTest = response
+            responseWeatherTest = response
         }
         
         func interactor(didFailShowWeather error: String) {
             presentWeatherCalled = true
-            errorMessageTest = error
+            errorWeatherMessageTest = error
+        }
+        
+        func interactor(didSuccessShowIcon response: IconModel.Response) {
+            presentIconCalled = true
+            responseIconTest = response
+        }
+        
+        func interactor(didFailShowIcon error: String) {
+            presentIconCalled = true
+            errorIconMessageTest = error
         }
     }
     
@@ -119,7 +133,7 @@ final class WeatherInteractorTests: XCTestCase {
         sut?.fetchWeather()
         
         // Then
-        let response = weatherPresenterSpy.responseTest
+        let response = weatherPresenterSpy.responseWeatherTest
         XCTAssertEqual(response?.weather.title, "Toronto", "Response weather detail name should be Toronto")
         XCTAssertEqual(response?.weather.consolidated_weather[3].weather_state_name, "Light Cloud", "Response weather detail name should be Light Cloud")
         
@@ -141,7 +155,7 @@ final class WeatherInteractorTests: XCTestCase {
 
         // Then
         XCTAssert(weatherPresenterSpy.presentWeatherCalled, "Weather present should be called")
-        XCTAssertEqual(weatherPresenterSpy.errorMessageTest, "Fail to show weather detail", "weather detail message error should be 'Fail to show weather detail'")
-        XCTAssertNil(weatherPresenterSpy.responseTest, "Response should be nil in weather detail fail")
+        XCTAssertEqual(weatherPresenterSpy.errorWeatherMessageTest, "Fail to show weather detail", "weather detail message error should be 'Fail to show weather detail'")
+        XCTAssertNil(weatherPresenterSpy.responseWeatherTest, "Response should be nil in weather detail fail")
     }
 }

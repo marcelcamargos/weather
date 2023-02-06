@@ -34,11 +34,17 @@ final class WeatherPresenterTests: XCTestCase {
         
         var displaySuccessShowWeatherCalled = false
         var displayFailShowWeatherCalled = false
+
+        var displaySuccessShowIconCalled = false
+        var displayFailShowIconCalled = false
         
         // MARK: Argument expectations
         
         var viewModel: WeatherModel.ViewModel?
-        var errorMessage: String?
+        var errorWeatherMessage: String?
+
+        var iconViewModel: IconModel.ViewModel?
+        var errorIconMessage: String?
         
         // MARK: WeatherViewControllerDelegate
         
@@ -49,7 +55,17 @@ final class WeatherPresenterTests: XCTestCase {
         
         func presenter(didFailShowWeather message: String) {
             displayFailShowWeatherCalled = true
-            self.errorMessage = message
+            self.errorWeatherMessage = message
+        }
+        
+        func presenter(didSuccessShowIcon presenterToView: IconModel.ViewModel) {
+            displaySuccessShowIconCalled = true
+            self.iconViewModel = presenterToView
+        }
+        
+        func presenter(didFailShowIcon message: String) {
+            displayFailShowIconCalled = true
+            self.errorIconMessage = message
         }
     }
     
@@ -62,7 +78,7 @@ final class WeatherPresenterTests: XCTestCase {
         let weather = Seeds.Weat.weather
         
         //When
-        let response = WeatherModel.Response(weather: weather, icon: UIImage())
+        let response = WeatherModel.Response(weather: weather)
         sut?.interactor(didSuccessShowWeather: response)
         
         //Then
@@ -82,18 +98,18 @@ final class WeatherPresenterTests: XCTestCase {
         sut?.interactor(didFailShowWeather: "Fail present weather detail")
         
         //Then
-        let errorMessageWeatherDetail = weatherViewControllerSpy.errorMessage
+        let errorMessageWeatherDetail = weatherViewControllerSpy.errorWeatherMessage
         XCTAssertEqual(errorMessageWeatherDetail, "Fail present weather detail", "Weather detail error message should be 'Fail present weather detail'")
     }
     
-    func testPresentWeatherDetailShouldAskViewControllerToDisplayWeahterInformation() {
+    func testPresentWeatherDetailShouldAskViewControllerToDisplayWeatherInformation() {
         // Given
         let weatherViewControllerSpy = WeatherViewControllerSpy()
         sut = WeatherPresenter(weatherViewControllerSpy)
         let weather = Seeds.Weat.weather
         
         // When
-        let response = WeatherModel.Response(weather: weather, icon: UIImage())
+        let response = WeatherModel.Response(weather: weather)
         sut?.interactor(didSuccessShowWeather: response)
         
         // Then
