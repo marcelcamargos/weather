@@ -6,7 +6,7 @@ Marcel Gonçalves Viana Marins de Camargos
 
 I fetched information from two urls. One brings detailed information about the weather and the other brings a related image.
 
-I handled loading, error and displayed information about the weather using swift view code.
+I handled loading, error, empty state and displayed information about the weather using swift view code.
 
 Also, I did unit tests using spies.
 
